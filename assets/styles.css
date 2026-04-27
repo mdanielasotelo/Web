@@ -1,0 +1,874 @@
+/* --- ESTILOS GENERALES Y RESETS --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+
+    --primaryColor: #0369A1
+}
+
+body {
+    font-family: Roboto, Helvetica, Arial, sans-serif;
+    color: #374151;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Tipografías responsivas */
+h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #011627;
+    margin-bottom: 1.25rem;
+}
+
+h2 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #011627;
+    margin-bottom: 0.75rem;
+}
+
+h3 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: #011627;
+    margin-bottom: 0.5rem;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+@media (min-width: 768px) {
+    h1 {
+        font-size: 2.75rem;
+    }
+
+    h2 {
+        font-size: 2.25rem;
+    }
+
+    h3 {
+        font-size: 1.25rem;
+    }
+}
+
+p {
+    margin-bottom: 1rem;
+}
+
+/* --- UTILIDADES --- */
+.text-center {
+    text-align: center;
+}
+
+.mb-lg {
+    margin-bottom: 3.5rem;
+}
+
+.padding-y-lg {
+    padding: 4rem 0;
+}
+
+.padding-y-md {
+    padding: 2.5rem 0;
+}
+
+/* Sistema de Grillas Mobile-First */
+.grid {
+    display: grid;
+    gap: 1.5rem;
+}
+
+/* Por defecto (Mobile): 1 columna */
+.grid-3,
+.grid-4 {
+    grid-template-columns: 1fr;
+}
+
+/* Tablets: 2 columnas */
+@media (min-width: 768px) {
+    .grid-3 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .grid-4 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Escritorio: 3 y 4 columnas */
+@media (min-width: 1024px) {
+    .grid-3 {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .grid-4 {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+/* --- BOTONES --- */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1.75rem;
+    font-size: 1rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.3s;
+    text-align: center;
+}
+
+.btn-primary {
+    background-color: var(--primaryColor);
+    color: white;
+}
+
+.btn-secondary {
+    background-color: #E0F2FE;
+    color: var(--primaryColor);
+}
+
+.btn-success {
+    background-color: #28a745;
+    color: white;
+}
+
+.btn-success:hover {
+    background-color: #22913c;
+}
+
+.btn-outline-full {
+    background-color: #ffffff;
+    color: #374151;
+    border: 1px solid #D1D5DB;
+    width: 100%;
+    margin-top: 1rem;
+}
+
+/* --- CABECERA (HEADER) STICKY Y RESPONSIVE --- */
+.header {
+    background-color: white;
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    /* Permite que el menú baje en mobile */
+}
+
+/* Logo */
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    text-decoration: none;
+
+    .img-logo {
+        width: 70px;
+        display: flex;
+        align-items: center;
+
+        img {
+            width: 100%;
+            object-fit: scale-down;
+        }
+    }
+}
+
+.logo-icon {
+    font-size: 2.2rem;
+    color: var(--primaryColor);
+
+}
+
+.logo-text {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #011627;
+    margin: 0;
+}
+
+/* Botón Hamburguesa */
+.menu-toggle {
+    display: block;
+    background: transparent;
+    border: none;
+    font-size: 1.6rem;
+    color: #011627;
+    cursor: pointer;
+    padding: 0.5rem;
+}
+
+/* Menú oculto por defecto en Mobile */
+.nav-menu {
+    display: none;
+    width: 100%;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding-top: 1.5rem;
+    padding-bottom: 1rem;
+    text-align: center;
+}
+
+/* Clase que se activa con JS en Mobile */
+.nav-menu.active {
+    display: flex;
+}
+
+.nav-menu ul {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    gap: 1.5rem;
+}
+
+.nav-menu a {
+    text-decoration: none;
+    color: #011627;
+    font-weight: 600;
+    font-size: 1.05rem;
+    transition: color 0.3s;
+}
+
+.nav-menu a:hover {
+    color: var(--primaryColor);
+}
+
+.btn-cotiza {
+    width: 100%;
+}
+
+a.cotiza-nav {
+    color: #F3F4F6;
+    border: 1px solid transparent;
+
+}
+
+a.cotiza-nav:hover {
+    background-color: #81c5eda4;
+    color: var(--primaryColor);
+    border: 1px solid var(--primaryColor);
+}
+
+/* --- VERSIÓN DESKTOP (A partir de 992px) --- */
+@media (min-width: 992px) {
+    .menu-toggle {
+        display: none;
+        /* Oculta la hamburguesa */
+    }
+
+    .nav-menu {
+        display: flex;
+        /* Muestra el menú siempre en PC */
+        flex-direction: row;
+        width: auto;
+        padding-top: 0;
+        padding-bottom: 0;
+        align-items: center;
+        gap: 2.5rem;
+    }
+
+    .nav-menu ul {
+        flex-direction: row;
+        gap: 2.5rem;
+    }
+
+    .btn-cotiza {
+        width: auto;
+    }
+}
+
+/* --- SECCIÓN HERO --- */
+.hero {
+    background-color: #F0F9FF;
+    padding: 3rem 0 2.5rem;
+
+    .hero-btn {
+        background-color: #fff;
+    }
+}
+
+@media (min-width: 768px) {
+    .hero {
+        padding: 4rem 0 3.5rem;
+    }
+}
+
+.hero-content {
+    max-width: 850px;
+    margin: 0 auto;
+}
+
+.hero-btn {
+    margin: 1.5rem 0 2rem;
+    border: 3px solid #0369A1;
+
+}
+
+.hero-features {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  
+    gap: 0.75rem;
+    font-weight: 500;
+}
+
+@media (min-width: 768px) {
+    .hero-features {
+        flex-direction: row;
+        justify-content: center;
+        
+        align-items: center;
+        gap: 1.5rem;
+    }
+}
+
+.feature-dot {
+    color: #28a745;
+    font-size: 0.6rem;
+    vertical-align: middle;
+    margin-right: 0.25rem;
+}
+
+/* --- SECCIÓN ESTADÍSTICAS --- */
+.stats {
+    background-color: var(--primaryColor);
+    ;
+    color: white;
+    padding: 2.5rem 0;
+}
+
+.stat-item {
+    text-align: center;
+}
+
+.stat-icon {
+    font-size: 2rem;
+    margin-bottom: 0.75rem;
+}
+
+.stat-number {
+    font-size: 2.25rem;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.stat-label {
+    font-size: 0.875rem;
+}
+
+.stat-text {
+    font-size: 1.5rem;
+    line-height: 1.2;
+}
+
+@media (min-width: 768px) {
+    .stat-text {
+        font-size: 1.75rem;
+    }
+}
+
+/* --- SECCIÓN ¿CÓMO FUNCIONA? --- */
+.step-card {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 1rem;
+    border: 2px solid #E0F2FE;
+    text-align: left;
+    position: relative;
+}
+
+.step-num {
+    background-color: var(--primaryColor);
+    ;
+    color: white;
+    font-weight: 700;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.25rem;
+}
+
+.step-icon-container {
+    background-color: #F0F9FF;
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.25rem;
+}
+
+.step-icon {
+    font-size: 1.75rem;
+    color: var(--primaryColor);
+    ;
+}
+
+/* --- SECCIÓN COMPROMISO --- */
+.commitment-box {
+    background-color: #ffffff;
+    padding: 2rem;
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1.5rem;
+    border: 1px solid #64748B;
+}
+
+@media (min-width: 768px) {
+    .commitment-box {
+        flex-direction: row;
+        text-align: left;
+        padding: 2.5rem;
+        gap: 2rem;
+    }
+}
+
+.commitment-circle {
+    background-color: #E0FFEA;
+    width: 4.5rem;
+    height: 4.5rem;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+/* --- SECCIÓN PREPAGAS --- */
+.prepaga-card {
+    background-color: white;
+    border-radius: 1rem;
+    overflow: hidden;
+    border: 1px solid #D1D5DB;
+}
+
+.prepaga-header {
+    padding: 1.5rem 1.25rem 1rem;
+}
+
+.prepaga-name {
+    margin: 0;
+    text-align: center;
+}
+
+.prepaga-body {
+    padding: 1rem 1.25rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.prepaga-tagline {
+    font-size: 0.875rem;
+    margin-bottom: 1.5rem;
+    min-height: auto;
+}
+
+@media (min-width: 1024px) {
+    .prepaga-tagline {
+        min-height: 2.8rem;
+    }
+}
+
+.prepaga-body h4 {
+    font-size: 0.875rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.planes-tags,
+.puntos-fuertes {
+    margin-bottom: 1.5rem;
+}
+
+.planes-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.tag {
+    background-color: #10B981;
+    color: #ffff;
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 0.25rem 0.75rem;
+    border-radius: 1rem;
+}
+
+.puntos-fuertes {
+    list-style: none;
+    font-size: 0.875rem;
+}
+
+.puntos-fuertes li {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.25rem;
+}
+
+.check-icon {
+    color: #28a745;
+    font-size: 0.8rem;
+}
+
+
+/* --- COLORES CABECERAS PREPAGAS --- */
+.avalian .prepaga-header {
+    background-color: #F0FFF4;
+}
+
+.prepaga-name {
+    color: #000;
+}
+
+.sancor .prepaga-header {
+    background-color: #F0F7FF;
+}
+
+
+
+.premedic .prepaga-header {
+    background-color: #F0FFFF;
+}
+
+
+.omint .prepaga-header {
+    background-color: #EEF7FF;
+}
+
+
+
+.medife .prepaga-header {
+    background-color: #FFF8F0;
+}
+
+
+.swiss .prepaga-header {
+    background-color: #FFF0F5;
+}
+
+
+/* --- SECCIÓN ¿POR QUÉ ELEGIRNOS? --- */
+.por-que-elegirnos {
+    background-color: #F0F9FF;
+}
+
+.why-card {
+    background-color: white;
+    padding: 2.5rem 2rem;
+    border-radius: 1rem;
+    border: 1px solid #D1D5DB;
+    text-align: left;
+}
+
+.why-icon-container {
+    background-color: #E0F2FE;
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.25rem;
+}
+
+.why-icon {
+    font-size: 1.75rem;
+    color: var(--primaryColor);
+    ;
+}
+
+/* --- SECCIÓN CTA Y CONTACTO --- */
+.cta-strip {
+    text-align: center;
+}
+
+.cta-strip-celeste {
+    background-color: #E0F2FE;
+    color: var(--primaryColor);
+    ;
+    font-weight: 600;
+    padding: 1.25rem 20px;
+    font-size: 2rem;
+}
+
+.cta-strip-azul {
+    background-color: #0369A1;
+    color: white;
+}
+
+.cta-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: center;
+    text-align: center;
+}
+
+@media (min-width: 768px) {
+    .cta-container {
+        flex-direction: row;
+        justify-content: space-between;
+        text-align: left;
+    }
+}
+
+.cta-container h2 {
+    color: white;
+    margin: 0;
+}
+
+.contact-methods-box {
+    background-color: #F3F4F6;
+    padding: 3rem 0;
+    border-bottom: 2px solid #D1D5DB;
+}
+
+@media (min-width: 768px) {
+    .contact-methods-box {
+        padding: 5rem 0;
+    }
+}
+
+.contact-grid {
+    border: 1px solid #D1D5DB;
+    border-radius: 1rem;
+    padding: 2rem 1.5rem;
+    background-color: white;
+    text-align: center;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+    .contact-grid {
+        padding: 3rem 2rem;
+    }
+}
+
+.contact-method {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.contact-icon-box {
+    background-color: #F0F9FF;
+}
+
+.contact-icon {
+    color: var(--primaryColor);
+    ;
+    font-size: 2.25rem;
+    margin-right: 0;
+    margin-bottom: 10px;
+}
+
+.btn-dudas {
+    background-color: #3b8cc6;
+    color: white;
+    font-size: 1.125rem;
+    padding: 1rem 2rem;
+    width: auto;
+    margin-top: 3rem;
+    display: inline-block;
+}
+
+/* =========================================
+   FOOTER
+   ========================================= */
+.footer {
+    background-color: #002945;
+    color: #b0c4de;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+}
+
+@media (min-width: 768px) {
+    .footer-grid {
+        grid-template-columns: 1.5fr 1fr 1fr 1fr;
+        gap: 2rem;
+    }
+}
+
+.brand-col {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.footer-logo-circle {
+    background-color: white;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    overflow: hidden;
+
+    img {
+        width: 100%;
+        object-fit: scale-down;
+    }
+}
+
+.footer-logo-circle i {
+    color: #4ebf9a;
+    font-size: 2rem;
+}
+
+.footer-logo-text {
+    color: white;
+    font-size: 1.6rem;
+    font-weight: 700;
+}
+
+.brand-desc {
+    color: #b0c4de;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin: 0;
+    max-width: 300px;
+}
+
+.footer-col h4 {
+    color: white;
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 1.25rem;
+}
+
+.footer-col ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.footer-col a,
+.contact-col span {
+    color: #b0c4de;
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: color 0.2s ease;
+}
+
+.footer-col a:hover {
+    color: white;
+}
+
+.contact-col li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.contact-col i {
+    color: #b0c4de;
+    font-size: 1.1rem;
+    width: 20px;
+    text-align: center;
+}
+
+.footer-legal {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    margin-top: 3rem;
+    padding-top: 2.5rem;
+}
+
+.footer-legal p {
+    color: #8da3b9;
+    font-size: 0.85rem;
+    line-height: 1.6;
+    margin: 0;
+    text-align: left;
+}
+
+.prepagas-col,
+.links-col,
+.contact-col {
+    margin-top: 3rem;
+}
+
+/* =========================================
+   BOTÓN FLOTANTE WHATSAPP
+   ========================================= */
+.whatsapp-float {
+    position: fixed;
+    width: 60px;
+    height: 60px;
+    bottom: 30px;
+    right: 30px;
+    background-color: #25d366;
+    color: #FFF;
+    border-radius: 50%;
+    text-align: center;
+    font-size: 35px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.15);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.whatsapp-float:hover {
+    background-color: #20b858;
+    color: #FFF;
+    transform: scale(1.08) translateY(-5px); 
+    box-shadow: 2px 5px 15px rgba(0, 0, 0, 0.25);
+}
+
+/* Ajuste para pantallas pequeñas (Mobile) */
+@media (max-width: 768px) {
+    .whatsapp-float {
+        width: 50px;
+        height: 50px;
+        bottom: 20px;
+        right: 20px;
+        font-size: 30px;
+    }
+}
