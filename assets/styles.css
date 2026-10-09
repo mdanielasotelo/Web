@@ -561,9 +561,9 @@ a.cotiza-nav:hover {
     background-color: #F0FFFF;
 }
 
-
+/* --- Prevencion Salud --- */
 .omint .prepaga-header {
-    background-color: #EEF7FF;
+    background-color: #FFF0F5;
 }
 
 
@@ -572,9 +572,9 @@ a.cotiza-nav:hover {
     background-color: #FFF8F0;
 }
 
-
+/* --- Opdea --- */
 .swiss .prepaga-header {
-    background-color: #FFF0F5;
+    background-color: #EEF7FF;
 }
 
 
